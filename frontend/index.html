@@ -278,7 +278,20 @@ async function send(){
   dots.innerHTML="<b>SnowGPT</b>";
   chatbox.appendChild(dots);
 
-  const r=await fetch("http://127.0.0.1:8000/chat",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:m})});
+  const userInput = input.value;
+
+const r = await fetch("https://snowgpt-backend.onrender.com/chat", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    username: "admin",
+    password: "1234",
+    message: userInput
+  })
+});
+
   const d=await r.json();
   dots.remove();
   typeAI(d.reply);
