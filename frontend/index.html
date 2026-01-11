@@ -294,6 +294,10 @@ const r = await fetch("https://snowgpt-backend.onrender.com/chat", {
 
   const d=await r.json();
   dots.remove();
+  const msg = document.createElement("div");
+msg.className = "ai";
+msg.innerText = d.reply;
+chatbox.appendChild(msg);
   typeAI(d.reply);
 }
 </script>
